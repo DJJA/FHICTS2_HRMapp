@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HRMapp.Logic.Repositories
+namespace HRMapp.DAL.Repositories
 {
-    public class SkillsetRepo : IRepo
+    public interface IRepo
     {
+
     }
 }

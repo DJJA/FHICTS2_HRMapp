@@ -8,7 +8,7 @@ namespace HRMapp.DAL
 {
     public class MemorySkillsetContext : ISkillsetContext
     {
-        public List<Skillset> list = new List<Skillset>();
+        private List<Skillset> list = new List<Skillset>();
 
         public MemorySkillsetContext()
         {

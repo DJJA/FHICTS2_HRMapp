@@ -4,4 +4,9 @@
     <TargetFramework>netstandard1.4</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HRM.Models\HRM.Models.csproj" />
+    <ProjectReference Include="..\HRMapp.DAL\HRMapp.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
