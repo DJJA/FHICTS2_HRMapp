@@ -9,6 +9,6 @@ namespace HRMapp.DAL.Repositories
     {
         private ITaskContext context = new MemoryTaskContext();
 
-        public IEnumerable<Task> GetAll() => context.GetAll();
+        public IEnumerable<ProductionTask> GetAll() => context.GetAll();
     }
 }

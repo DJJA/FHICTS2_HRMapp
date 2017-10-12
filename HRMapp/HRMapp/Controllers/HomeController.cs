@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HRMapp.ViewModels;
 using HRMapp.Logic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HRMapp.Controllers
 {
@@ -23,7 +24,13 @@ namespace HRMapp.Controllers
 
         public IActionResult Skillset()
         {
-            return View();
+            var skillsets = skillsetLogic.GetAll();
+            var list = new List<SelectListItem>();
+            foreach (var skillset in skillsets)
+            {
+                list.Add(new SelectListItem() { Text = skillset.Name, Value = skillset.Id.ToString() });
+            }
+            return View(list);
         }
 
         public IActionResult EditSkillset()

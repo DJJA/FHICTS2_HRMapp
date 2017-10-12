@@ -8,39 +8,39 @@ namespace HRMapp.DAL
 {
     public class MemoryTaskContext : ITaskContext
     {
-        private List<Task> list = new List<Task>();
+        private List<ProductionTask> list = new List<ProductionTask>();
 
         public MemoryTaskContext()
         {
-            list.Add(new Task(0, "Connector solderen 1"));
-            list.Add(new Task(1, "Connector solderen 2"));
-            list.Add(new Task(2, "Connector solderen 3"));
-            list.Add(new Task(3, "Connector solderen 4"));
-            list.Add(new Task(4, "Connector solderen 5"));
+            list.Add(new ProductionTask(0, "Connector solderen 1"));
+            list.Add(new ProductionTask(1, "Connector solderen 2"));
+            list.Add(new ProductionTask(2, "Connector solderen 3"));
+            list.Add(new ProductionTask(3, "Connector solderen 4"));
+            list.Add(new ProductionTask(4, "Connector solderen 5"));
         }
-        public bool Add(Task value)
+        public bool Add(ProductionTask value)
         {
             list.Add(value);
             return true;
         }
 
-        public bool Delete(Task value)
+        public bool Delete(ProductionTask value)
         {
             list.Remove(value);
             return true;
         }
 
-        public IEnumerable<Task> GetAll()
+        public IEnumerable<ProductionTask> GetAll()
         {
             return list;
         }
 
-        public Task GetById(int id)
+        public ProductionTask GetById(int id)
         {
             return list.Single(task => task.Id == id);
         }
 
-        public bool Update(Task value)
+        public bool Update(ProductionTask value)
         {
             var item = list.Single(task => task.Id == value.Id);
             item = value;

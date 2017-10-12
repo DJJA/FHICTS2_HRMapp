@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HRMapp.DAL
 {
-    public interface ITaskContext : IContext<Task>
+    public interface ITaskContext : IContext<ProductionTask>
     {
     }
 }
