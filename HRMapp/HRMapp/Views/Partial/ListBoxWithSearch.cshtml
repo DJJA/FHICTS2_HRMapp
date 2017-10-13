@@ -1,0 +1,23 @@
+@using HRM.Models
+@model List<SelectListItem>
+
+    <input type="text" placeholder="Search..." />
+    <div>
+        @*@Html.ListBox("tweenaam", Model)*@
+        <select id="tweenaam" onchange="opfunction()" size="10">
+            @foreach(var item in Model)
+            {
+                <option value="@item.Value" @{if(item.Selected){"Selected"}else{"meh"}}>@item.Text</option>
+            }
+        </select>
+    </div>
+    <script>
+        function opfunction() {
+            var e = document.getElementById("tweenaam");
+            var selectedSkillsetId = e.options[e.selectedIndex].value;
+            //alert("Hoi, item changed to skillset with id: " + selectedSkillsetId);
+            //window.location = 'Url.Action("Skillset", "Home")/' + selectedSkillsetId;
+            window.location = "/Home/Skillset/" + selectedSkillsetId;
+
+        }
+    </script>

@@ -1,11 +1,25 @@
 @using HRM.Models
-@model List<SelectListItem>
+@using HRMapp.ViewModels
+@model SkillsetCollectionViewModel
 
 @{
     ViewData["Title"] = "Skillset";
-    Layout = "~/Views/Shared/_CrudOperations.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Skillset</h2>
 
-@Html.ListBox("eenName", Model)
+<div class="row">
+    <div class="col-md-3">
+      @Html.Partial("../Partial/ListBoxWithSearch.cshtml", Model.SkillsetListItems)
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            @Html.Partial("../Partial/CrudButtons.cshtml")
+        </div>
+        <div class="row">
+            @Html.Partial("../Partial/DisplaySkillsetPView.cshtml", Model.Skillsets[Model.SelectedIndex])
+        </div>
+    </div>
+
+</div>

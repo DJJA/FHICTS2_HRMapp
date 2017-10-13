@@ -1,8 +1,18 @@
 
 @{
     ViewData["Title"] = "Task";
-    Layout = "~/Views/Shared/_CrudOperations.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Task</h2>
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            @Html.Partial("../Partial/CrudButtons.cshtml")
+        </div>
+        <div class="row">
+        </div>
+    </div>
 
+</div>
