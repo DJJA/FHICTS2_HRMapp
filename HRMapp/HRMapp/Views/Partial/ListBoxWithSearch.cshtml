@@ -3,13 +3,13 @@
 
     <input type="text" placeholder="Search..." />
     <div>
-        @*@Html.ListBox("tweenaam", Model)*@
-        <select id="tweenaam" onchange="opfunction()" size="10">
+        @Html.ListBox("tweenaam", Model)
+        @*<select id="tweenaam" onchange="opfunction()" size="10">
             @foreach(var item in Model)
             {
-                <option value="@item.Value" @{if(item.Selected){"Selected"}else{"meh"}}>@item.Text</option>
+                <option value="@item.Value" @(item.Selected ? "selected" : "")>@item.Text</option>
             }
-        </select>
+        </select>*@
     </div>
     <script>
         function opfunction() {
