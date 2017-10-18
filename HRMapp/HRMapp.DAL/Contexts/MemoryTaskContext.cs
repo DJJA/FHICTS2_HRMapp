@@ -46,11 +46,11 @@ namespace HRMapp.DAL
 
         private void AddRandomItems()
         {
-            list.Add(new ProductionTask(0, "Connector solderen 1"));
-            list.Add(new ProductionTask(1, "Connector solderen 2"));
-            list.Add(new ProductionTask(2, "Connector solderen 3"));
-            list.Add(new ProductionTask(3, "Connector solderen 4"));
-            list.Add(new ProductionTask(4, "Connector solderen 5"));
+            list.Add(new ProductionTask(0, "Connector solderen 1", "Het solderen van een 4-polige connector"));
+            list.Add(new ProductionTask(1, "Connector solderen 2", "Het solderen van een 8-polige connector"));
+            list.Add(new ProductionTask(2, "Connector solderen 3", "Het solderen van een 16-polige connector"));
+            list.Add(new ProductionTask(3, "Connector solderen 4", "Het solderen van een 32-polige connector"));
+            list.Add(new ProductionTask(4, "Connector solderen 5", "Het solderen van een 64-polige connector"));
         }
     }
 }

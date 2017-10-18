@@ -16,5 +16,11 @@ namespace HRMapp.Models
             Id = id;
             Name = name;
         }
+
+        public ProductionTask(int id, string name, string description)
+            : this(id, name)
+        {
+            Description = description;
+        }
     }
 }

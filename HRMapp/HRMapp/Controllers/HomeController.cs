@@ -93,15 +93,17 @@ namespace HRMapp.Controllers
             return RedirectToAction("Skillset", new { id = idAddedSkillset });
         }
 
-        public IActionResult Task()
+        public IActionResult Task(int id)
         {
             var tasks = taskLogic.GetAll();
-            var listItems = new List<SelectListItem>();
-            foreach (var task in tasks)
-            {
-                listItems.Add(new SelectListItem() { Text = task.Name, Value = task.Id.ToString() });
-            }
-            return View(listItems);
+            //var listItems = new List<SelectListItem>();
+            //foreach (var task in tasks)
+            //{
+            //    listItems.Add(new SelectListItem() { Text = task.Name, Value = task.Id.ToString() });
+            //}
+            //return View(listItems);
+            var model = new TaskCollectionViewModel(id, tasks.ToList());    // Where do I use a List and where an IEnumerable? Where do I convert?
+            return View(model);
         }
 
         public IActionResult TaskView(int id)
