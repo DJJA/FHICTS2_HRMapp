@@ -1,4 +1,4 @@
-﻿using HRM.Models;
+﻿using HRMapp.Models;
 using HRMapp.DAL;
 using System;
 using System.Collections.Generic;

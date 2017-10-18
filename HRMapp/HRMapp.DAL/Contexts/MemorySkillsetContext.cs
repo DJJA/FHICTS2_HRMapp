@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HRM.Models;
+using HRMapp.Models;
 using System.Linq;
 
 namespace HRMapp.DAL

@@ -1,4 +1,4 @@
-﻿using HRM.Models;
+﻿using HRMapp.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;

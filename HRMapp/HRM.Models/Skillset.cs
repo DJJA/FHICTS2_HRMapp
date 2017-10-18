@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HRM.Models
+namespace HRMapp.Models
 {
     public class Skillset
     {

@@ -55,9 +55,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HRM.Models\HRM.Models.csproj">
+    <ProjectReference Include="..\HRM.Models\HRMapp.Models.csproj">
       <Project>{ef500c74-d5cd-4500-9414-ac4901f81a32}</Project>
-      <Name>HRM.Models</Name>
+      <Name>HRMapp.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\HRMapp.Logic\HRMapp.Logic.csproj">
       <Project>{9163d7c1-6f89-4353-8042-efeadc3e9c94}</Project>

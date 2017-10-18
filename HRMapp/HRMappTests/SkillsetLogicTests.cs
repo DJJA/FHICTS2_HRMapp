@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HRMapp.Logic;
-using HRM.Models;
+using HRMapp.Models;
 using System.Collections;
 using System.Linq;
 

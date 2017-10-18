@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using HRMapp.ViewModels;
 using HRMapp.Logic;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using HRM.Models;
+using HRMapp.Models;
 
 namespace HRMapp.Controllers
 {
@@ -87,7 +87,7 @@ namespace HRMapp.Controllers
         [HttpPost]
         public IActionResult EditSkillset(SkillsetViewModel model)
         {
-            var idAddedSkillset = skillsetLogic.Add(new HRM.Models.Skillset(-1, model.Title, model.Description));
+            var idAddedSkillset = skillsetLogic.Add(new HRMapp.Models.Skillset(-1, model.Title, model.Description));
             //var skillsets = skillsetLogic.GetAll();
             return RedirectToAction("Skillset", new { id = idAddedSkillset });
         }
@@ -96,5 +96,10 @@ namespace HRMapp.Controllers
         {
             return View();
         }
+
+        //public IActionResult TaskView()
+        //{
+        //    return PartialView();
+        //}
     }
 }
