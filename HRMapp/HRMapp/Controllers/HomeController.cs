@@ -56,17 +56,40 @@ namespace HRMapp.Controllers
         //    return PartialView("DisplaySkillsetPView", skillset);
         //}
 
+        public IActionResult NewSkillset()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult NewSkillset(SkillsetViewModel model)
+        {
+            var idAddedSkillset = skillsetLogic.Add(new Skillset(model.Title, model.Description));
+            return RedirectToAction("Skillset", new { id = idAddedSkillset });
+        }
+
         public IActionResult EditSkillset()
         {
+            //var skillsets = skillsetLogic.GetAll().ToList();
+
+            //int index = -1;
+            //for (int i = 0; i < skillsets.Count(); i++)
+            //{
+            //    if (skillsets[i].Id == id) index = i;
+            //}
+
+            //var skillset = skillsets[index];
+
+            //var model = new SkillsetViewModel() { Id = id, Title = skillset.Name, Description = skillset.Description };
             return View();
         }
 
         [HttpPost]
         public IActionResult EditSkillset(SkillsetViewModel model)
         {
-            var success = skillsetLogic.Add(new HRM.Models.Skillset(0, model.Title, model.Description));
-            var skillsets = skillsetLogic.GetAll();
-            return RedirectToAction("EditSkillset");
+            var idAddedSkillset = skillsetLogic.Add(new HRM.Models.Skillset(-1, model.Title, model.Description));
+            //var skillsets = skillsetLogic.GetAll();
+            return RedirectToAction("Skillset", new { id = idAddedSkillset });
         }
 
         public IActionResult Task()

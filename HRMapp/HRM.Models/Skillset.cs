@@ -23,6 +23,18 @@ namespace HRM.Models
         }
         public string Description { get; private set; }
 
+        public Skillset(string name)
+        {
+            Id = -1;
+            Name = name;
+        }
+
+        public Skillset(string name, string description)
+            : this(name)
+        {
+            Description = description;
+        }
+
         public Skillset(int id, string name)
         {
             Id = id;
@@ -30,9 +42,8 @@ namespace HRM.Models
         }
 
         public Skillset(int id, string name, string description)
+            : this(id, name)
         {
-            Id = id;
-            Name = name;
             Description = description;
         }
     }

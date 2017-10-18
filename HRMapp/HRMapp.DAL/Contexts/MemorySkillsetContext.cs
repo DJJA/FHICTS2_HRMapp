@@ -8,21 +8,18 @@ namespace HRMapp.DAL
 {
     public class MemorySkillsetContext : ISkillsetContext
     {
-        private List<Skillset> list = new List<Skillset>();
+        private static List<Skillset> list = new List<Skillset>();  // Static because the homecontroller gets reïnstatiated every request, so does the entire repository pattern
 
         public MemorySkillsetContext()
         {
-            list.Add(new Skillset(0, "Solderen 1"));
-            list.Add(new Skillset(1, "Solderen 2"));
-            list.Add(new Skillset(2, "Solderen 3"));
-            list.Add(new Skillset(3, "Solderen 4"));
-            list.Add(new Skillset(4, "Solderen 5"));
+            if (list.Count() == 0) AddRandomItems();
         }
 
-        public bool Add(Skillset value)
+        public int Add(Skillset value)
         {
-            list.Add(value);
-            return true;
+            var skillset = new Skillset(list[list.Count - 1].Id + 1, value.Name, value.Description);
+            list.Add(skillset);
+            return skillset.Id;
         }
 
         public bool Delete(Skillset value)
@@ -46,6 +43,15 @@ namespace HRMapp.DAL
             var item = list.Single(skillset => skillset.Id == value.Id);
             item = value;
             return true;
+        }
+
+        private void AddRandomItems()
+        {
+            list.Add(new Skillset(0, "Solderen 1"));
+            list.Add(new Skillset(1, "Solderen 2"));
+            list.Add(new Skillset(2, "Solderen 3"));
+            list.Add(new Skillset(3, "Solderen 4"));
+            list.Add(new Skillset(4, "Solderen 5"));
         }
     }
 }

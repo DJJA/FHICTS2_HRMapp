@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMapp.Logic", "HRMapp.Logic\HRMapp.Logic.csproj", "{9163D7C1-6F89-4353-8042-EFEADC3E9C94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRMapp.Logic", "HRMapp.Logic\HRMapp.Logic.csproj", "{9163D7C1-6F89-4353-8042-EFEADC3E9C94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMapp.DAL", "HRMapp.DAL\HRMapp.DAL.csproj", "{CD3DD4AE-857D-43F0-B7D1-51A3D121F318}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRMapp.DAL", "HRMapp.DAL\HRMapp.DAL.csproj", "{CD3DD4AE-857D-43F0-B7D1-51A3D121F318}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMapp", "HRMapp\HRMapp.csproj", "{BB2730DA-3488-4EF3-A1C0-42F14D6428D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRMapp", "HRMapp\HRMapp.csproj", "{BB2730DA-3488-4EF3-A1C0-42F14D6428D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRM.Models", "HRM.Models\HRM.Models.csproj", "{EF500C74-D5CD-4500-9414-AC4901F81A32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRM.Models", "HRM.Models\HRM.Models.csproj", "{EF500C74-D5CD-4500-9414-AC4901F81A32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMappTests", "HRMappTests\HRMappTests.csproj", "{9DE0A901-9BD7-4E7D-ACCB-F0A26F81DC8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{EF500C74-D5CD-4500-9414-AC4901F81A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF500C74-D5CD-4500-9414-AC4901F81A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF500C74-D5CD-4500-9414-AC4901F81A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE0A901-9BD7-4E7D-ACCB-F0A26F81DC8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE0A901-9BD7-4E7D-ACCB-F0A26F81DC8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE0A901-9BD7-4E7D-ACCB-F0A26F81DC8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE0A901-9BD7-4E7D-ACCB-F0A26F81DC8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

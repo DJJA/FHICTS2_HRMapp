@@ -8,20 +8,17 @@ namespace HRMapp.DAL
 {
     public class MemoryTaskContext : ITaskContext
     {
-        private List<ProductionTask> list = new List<ProductionTask>();
+        private static List<ProductionTask> list = new List<ProductionTask>();
 
         public MemoryTaskContext()
         {
-            list.Add(new ProductionTask(0, "Connector solderen 1"));
-            list.Add(new ProductionTask(1, "Connector solderen 2"));
-            list.Add(new ProductionTask(2, "Connector solderen 3"));
-            list.Add(new ProductionTask(3, "Connector solderen 4"));
-            list.Add(new ProductionTask(4, "Connector solderen 5"));
+            if (list.Count() == 0) AddRandomItems();
         }
-        public bool Add(ProductionTask value)
+
+        public int Add(ProductionTask value)
         {
             list.Add(value);
-            return true;
+            return value.Id;
         }
 
         public bool Delete(ProductionTask value)
@@ -45,6 +42,15 @@ namespace HRMapp.DAL
             var item = list.Single(task => task.Id == value.Id);
             item = value;
             return true;
+        }
+
+        private void AddRandomItems()
+        {
+            list.Add(new ProductionTask(0, "Connector solderen 1"));
+            list.Add(new ProductionTask(1, "Connector solderen 2"));
+            list.Add(new ProductionTask(2, "Connector solderen 3"));
+            list.Add(new ProductionTask(3, "Connector solderen 4"));
+            list.Add(new ProductionTask(4, "Connector solderen 5"));
         }
     }
 }

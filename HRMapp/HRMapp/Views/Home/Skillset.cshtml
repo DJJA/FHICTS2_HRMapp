@@ -11,14 +11,14 @@
 
 <div class="row">
     <div class="col-md-3">
-      @Html.Partial("../Partial/ListBoxWithSearch.cshtml", Model.SkillsetListItems)
+      @Html.Partial("../Partial/ListBoxWithSearch.cshtml", Model)
     </div>
     <div class="col-md-9">
         <div class="row">
-            @Html.Partial("../Partial/CrudButtons.cshtml")
+            @Html.Partial("../Partial/_CrudButtons.cshtml")
         </div>
         <div class="row">
-            @Html.Partial("../Partial/DisplaySkillsetPView.cshtml", Model.Skillsets[Model.SelectedIndex])
+            @Html.Partial("../Partial/_SkillsetView.cshtml", Model.Skillsets[Model.SelectedIndex])
         </div>
     </div>
 

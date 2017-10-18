@@ -11,10 +11,9 @@ namespace HRMapp.DAL.Repositories
 
         public IEnumerable<Skillset> GetAll() => context.GetAll();
 
-        public bool Add(Skillset skillset)
+        public int Add(Skillset skillset)
         {
-            context.Add(skillset);
-            return true;
+            return context.Add(skillset);
         }
     }
 }

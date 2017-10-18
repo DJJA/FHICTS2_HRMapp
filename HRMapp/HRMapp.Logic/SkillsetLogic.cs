@@ -13,6 +13,6 @@ namespace HRMapp.Logic
 
         public IEnumerable<Skillset> GetAll() => repo.GetAll();
 
-        public bool Add(Skillset s) => repo.Add(s);
+        public int Add(Skillset s) => repo.Add(s);
     }
 }

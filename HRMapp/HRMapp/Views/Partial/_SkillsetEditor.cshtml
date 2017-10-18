@@ -1,0 +1,33 @@
+@using HRMapp.ViewModels
+@model SkillsetViewModel
+
+<form asp-action="EditSkillset" method="post">
+    <div class="form-group">
+        <label asp-for="@Model.Title" class="control-label"></label>
+        <input asp-for="@Model.Title" class="form-control" oninput="userInputChanged = true" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Description" class="control-label"></label>
+        @*<input asp-for="@Model.Description" class="form-control" oninput="settingsChanged = true" />*@
+        <textarea asp-for="@Model.Description" class="form-control" oninput="userInputChanged = true" placeholder="Typ hier een omschrijving..."></textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-default" onclick="userInputChanged = false">Opslaan</button>
+        <a class="btn btn-default" onclick="window.history.back()">Annuleren</a>
+    </div>
+</form>
+
+<script>
+    var userInputChanged = false;
+    function skillsetEditorCancelClicked() {
+        if (userInputChanged && confirm('Weet u zeker dat u de wijzingen niet wil opslaan?')) {
+            window.history.back();
+        }
+    }
+    window.onbeforeunload = function (event) {
+        if (userInputChanged) {
+            var message = 'Er zijn wijzigingen niet opgeslagen. Weet u zeker dat u de pagina wilt verlaten?';
+            return message;
+        }
+    }
+</script>

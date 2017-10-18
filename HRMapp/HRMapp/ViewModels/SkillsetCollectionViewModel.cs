@@ -22,6 +22,7 @@ namespace HRMapp.ViewModels
                 {
                     listItems.Add(new SelectListItem() { Text = skillset.Name, Value = skillset.Id.ToString(), Selected = (Skillsets[SelectedIndex].Id == skillset.Id) });
                 }
+                //listItems.Add(new { @onchange = "alert('das');"});
                 SkillsetListItems = listItems;
             }
         }
@@ -31,6 +32,11 @@ namespace HRMapp.ViewModels
         {
             SelectedIndex = index;
             Skillsets = skillsets;
+        }
+
+        public object GetArguments()
+        {
+            return new { @onchange = "opfunction();", @size = 10 };
         }
     }
 }

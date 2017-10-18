@@ -1,9 +1,10 @@
 @using HRM.Models
-@model List<SelectListItem>
+@using HRMapp.ViewModels
+@model SkillsetCollectionViewModel
 
     <input type="text" placeholder="Search..." />
     <div>
-        @Html.ListBox("tweenaam", Model)
+        @Html.ListBox("tweenaam", Model.SkillsetListItems, Model.GetArguments())
         @*<select id="tweenaam" onchange="opfunction()" size="10">
             @foreach(var item in Model)
             {

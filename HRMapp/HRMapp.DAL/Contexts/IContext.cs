@@ -8,7 +8,7 @@ namespace HRMapp.DAL
     {
         IEnumerable<T> GetAll();
         T GetById(int id);
-        bool Add(T value);
+        int Add(T value);
         bool Delete(T value);
         bool Update(T value);
     }
