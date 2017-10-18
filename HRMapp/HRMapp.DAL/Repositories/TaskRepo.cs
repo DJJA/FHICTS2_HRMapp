@@ -10,5 +10,6 @@ namespace HRMapp.DAL.Repositories
         private ITaskContext context = new MemoryTaskContext();
 
         public IEnumerable<ProductionTask> GetAll() => context.GetAll();
+        public ProductionTask GetById(int id) => context.GetById(id);
     }
 }

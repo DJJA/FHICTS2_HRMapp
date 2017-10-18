@@ -13,6 +13,7 @@ namespace HRMapp.Controllers
     public class HomeController : Controller
     {
         private SkillsetLogic skillsetLogic = new SkillsetLogic();
+        private TaskLogic taskLogic = new TaskLogic();
         public IActionResult Index()
         {
             return View();
@@ -94,12 +95,19 @@ namespace HRMapp.Controllers
 
         public IActionResult Task()
         {
-            return View();
+            var tasks = taskLogic.GetAll();
+            var listItems = new List<SelectListItem>();
+            foreach (var task in tasks)
+            {
+                listItems.Add(new SelectListItem() { Text = task.Name, Value = task.Id.ToString() });
+            }
+            return View(listItems);
         }
 
-        //public IActionResult TaskView()
-        //{
-        //    return PartialView();
-        //}
+        public IActionResult TaskView(int id)
+        {
+            var task = taskLogic.GetById(id);
+            return PartialView("../Partial/_TaskView", task);
+        }
     }
 }

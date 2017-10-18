@@ -1,18 +1,7 @@
 @using HRMapp.Models
-@using HRMapp.ViewModels
-@model SkillsetCollectionViewModel
+@model List<SelectListItem>
 
-<input type="text" placeholder="Search..." />
-<div>
-    @Html.ListBox("tweenaam", Model.SkillsetListItems, Model.GetArguments())
-</div>
-<script>
-        function opfunction() {
-            var e = document.getElementById("tweenaam");
-            var selectedSkillsetId = e.options[e.selectedIndex].value;
-            //alert("Hoi, item changed to skillset with id: " + selectedSkillsetId);
-            //window.location = 'Url.Action("Skillset", "Home")/' + selectedSkillsetId;
-            window.location = "/Home/Skillset/" + selectedSkillsetId;
-
-        }
-</script>
+    <input type="text" placeholder="Search..." />
+    <div>
+        @Html.ListBox("tweenaam", Model)
+    </div>
