@@ -24,14 +24,7 @@ namespace HRMapp.Controllers
             return View();
         }
 
-        //public IActionResult Skillset()
-        //{
-        //    var skillsets = skillsetLogic.GetAll();
-
-        //    var model = new SkillsetCollectionViewModel(skillsets.ToList(), skillsets.Count()-1);
-        //    return View(model);
-        //}
-
+        #region Skillset
         public IActionResult Skillset(int id)
         {
             var skillsets = skillsetLogic.GetAll().ToList();
@@ -45,17 +38,6 @@ namespace HRMapp.Controllers
             var model = new SkillsetCollectionViewModel(skillsets.ToList(), index);
             return View(model);
         }
-
-        //public IActionResult DisplaySkillset(int id)
-        //{
-        //    Skillset skillset = null;
-        //    foreach (var skill in skillsetLogic.GetAll())
-        //    {
-        //        if (skill.Id == id)
-        //            skillset = skill;
-        //    }
-        //    return PartialView("DisplaySkillsetPView", skillset);
-        //}
 
         public IActionResult NewSkillset()
         {
@@ -71,17 +53,6 @@ namespace HRMapp.Controllers
 
         public IActionResult EditSkillset()
         {
-            //var skillsets = skillsetLogic.GetAll().ToList();
-
-            //int index = -1;
-            //for (int i = 0; i < skillsets.Count(); i++)
-            //{
-            //    if (skillsets[i].Id == id) index = i;
-            //}
-
-            //var skillset = skillsets[index];
-
-            //var model = new SkillsetViewModel() { Id = id, Title = skillset.Name, Description = skillset.Description };
             return View();
         }
 
@@ -92,7 +63,8 @@ namespace HRMapp.Controllers
             //var skillsets = skillsetLogic.GetAll();
             return RedirectToAction("Skillset", new { id = idAddedSkillset });
         }
-
+        #endregion
+        #region Task
         public IActionResult Task(int id)
         {
             var tasks = taskLogic.GetAll();
@@ -111,5 +83,32 @@ namespace HRMapp.Controllers
             var task = taskLogic.GetById(id);
             return PartialView("../Partial/_TaskView", task);
         }
+
+        public IActionResult NewTask()
+        {
+            return View("../Shared/TaskEditor", new TaskEditorViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult NewTask(TaskEditorViewModel model)
+        {
+            //var addedTaskId = taskLogic.Add(new ProductionTask(-1, model.Title, model.Description));
+            var addedTaskId = taskLogic.Add(model.ToTask());
+            return RedirectToAction("Task", new { id = addedTaskId });
+        }
+
+        public IActionResult EditTask(int id)
+        {
+            var task = taskLogic.GetById(id);
+            return View("../Shared/TaskEditor", new TaskEditorViewModel(task));
+        }
+
+        [HttpPost]
+        public IActionResult EditTask(TaskEditorViewModel model)
+        {
+            var success = taskLogic.Update(model.ToTask());
+            return RedirectToAction("Task", new { id = model.Id });
+        }
+        #endregion
     }
 }
