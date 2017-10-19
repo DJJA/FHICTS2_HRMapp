@@ -8,50 +8,56 @@ namespace HRMapp.DAL
 {
     public class MemorySkillsetContext : ISkillsetContext
     {
-        private static List<Skillset> list = new List<Skillset>();  // Static because the homecontroller gets reïnstatiated every request, so does the entire repository pattern
+        private static List<Skillset> skillsets = new List<Skillset>();  // Static because the homecontroller gets reïnstatiated every request, so does the entire repository pattern
 
         public MemorySkillsetContext()
         {
-            if (list.Count() == 0) AddRandomItems();
+            if (skillsets.Count() == 0) AddRandomItems();
         }
 
         public int Add(Skillset value)
         {
-            var skillset = new Skillset(list[list.Count - 1].Id + 1, value.Name, value.Description);
-            list.Add(skillset);
+            var skillset = new Skillset(skillsets[skillsets.Count - 1].Id + 1, value.Name, value.Description);
+            skillsets.Add(skillset);
             return skillset.Id;
         }
 
         public bool Delete(Skillset value)
         {
-            list.Remove(value);
+            skillsets.Remove(value);
             return true;
         }
 
         public IEnumerable<Skillset> GetAll()
         {
-            return list;
+            return skillsets;
         }
 
         public Skillset GetById(int id)
         {
-            return list.Single(skillset => skillset.Id == id);
+            return skillsets.Single(skillset => skillset.Id == id);
         }
 
         public bool Update(Skillset value)
         {
-            var item = list.Single(skillset => skillset.Id == value.Id);
-            item = value;
-            return true;
+            try
+            {
+                skillsets[skillsets.FindIndex(skillset => skillset.Id == value.Id)] = value;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void AddRandomItems()
         {
-            list.Add(new Skillset(0, "Solderen 1"));
-            list.Add(new Skillset(1, "Solderen 2"));
-            list.Add(new Skillset(2, "Solderen 3"));
-            list.Add(new Skillset(3, "Solderen 4"));
-            list.Add(new Skillset(4, "Solderen 5"));
+            skillsets.Add(new Skillset(0, "Solderen 1"));
+            skillsets.Add(new Skillset(1, "Solderen 2"));
+            skillsets.Add(new Skillset(2, "Solderen 3"));
+            skillsets.Add(new Skillset(3, "Solderen 4"));
+            skillsets.Add(new Skillset(4, "Solderen 5"));
         }
     }
 }

@@ -3,5 +3,12 @@
 
 <input type="text" placeholder="Search..." />
 <div>
-    @Html.DropDownList("tweenaam", Model, new { size = 5 })
+    @Html.DropDownList("lbox", Model, new { size = 5 })
 </div>
+
+<script>
+    function getListBoxSelectedItemId() {
+        var listBox = document.getElementById('lbox');
+        return listBox.options[listBox.selectedIndex].value;
+    }
+</script>

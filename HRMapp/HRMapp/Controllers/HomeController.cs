@@ -27,41 +27,40 @@ namespace HRMapp.Controllers
         #region Skillset
         public IActionResult Skillset(int id)
         {
-            var skillsets = skillsetLogic.GetAll().ToList();
-
-            int index = -1;
-            for (int i = 0; i < skillsets.Count(); i++)
-            {
-                if (skillsets[i].Id == id) index = i;
-            }
-
-            var model = new SkillsetCollectionViewModel(skillsets.ToList(), index);
+            var skillsets = skillsetLogic.GetAll();
+            var model = new SkillsetCollectionViewModel(id, skillsets.ToList());    // Where do I use a List and where an IEnumerable? Where do I convert?
             return View(model);
+        }
+
+        public IActionResult SkillsetView(int id)
+        {
+            var skillset = skillsetLogic.GetById(id);
+            return PartialView("../Partial/_SkillsetView", skillset);
         }
 
         public IActionResult NewSkillset()
         {
-            return View();
+            return View("../Shared/SkillsetEditor", new SkillsetEditorViewModel());
         }
 
         [HttpPost]
-        public IActionResult NewSkillset(SkillsetViewModel model)
+        public IActionResult NewSkillset(SkillsetEditorViewModel model)
         {
-            var idAddedSkillset = skillsetLogic.Add(new Skillset(model.Title, model.Description));
-            return RedirectToAction("Skillset", new { id = idAddedSkillset });
+            var addedSkillsetId = skillsetLogic.Add(model.ToSkillset());
+            return RedirectToAction("Skillset", new { id = addedSkillsetId });
         }
 
-        public IActionResult EditSkillset()
+        public IActionResult EditSkillset(int id)
         {
-            return View();
+            var skillset = skillsetLogic.GetById(id);
+            return View("../Shared/SkillsetEditor", new SkillsetEditorViewModel(skillset));
         }
 
         [HttpPost]
-        public IActionResult EditSkillset(SkillsetViewModel model)
+        public IActionResult EditSkillset(SkillsetEditorViewModel model)
         {
-            var idAddedSkillset = skillsetLogic.Add(new HRMapp.Models.Skillset(-1, model.Title, model.Description));
-            //var skillsets = skillsetLogic.GetAll();
-            return RedirectToAction("Skillset", new { id = idAddedSkillset });
+            var success = skillsetLogic.Update(model.ToSkillset());
+            return RedirectToAction("Skillset", new { id = model.Id });
         }
         #endregion
         #region Task

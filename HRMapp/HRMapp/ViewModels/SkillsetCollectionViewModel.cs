@@ -10,33 +10,28 @@ namespace HRMapp.ViewModels
     public class SkillsetCollectionViewModel
     {
         private List<Skillset> skillsets;
-        public List<SelectListItem> SkillsetListItems { get; private set; }
+        private int selectedItemId;
+
+        public List<SelectListItem> ListItems { get; private set; }
         public List<Skillset> Skillsets
         {
             get { return skillsets; }
-            set
+            private set
             {
                 skillsets = value;
-                var listItems = new List<SelectListItem>();
+
+                ListItems = new List<SelectListItem>();
                 foreach (var skillset in skillsets)
                 {
-                    listItems.Add(new SelectListItem() { Text = skillset.Name, Value = skillset.Id.ToString(), Selected = (Skillsets[SelectedIndex].Id == skillset.Id) });
+                    ListItems.Add(new SelectListItem() { Text = skillset.Name, Value = skillset.Id.ToString(), Selected = (skillset.Id == selectedItemId) });
                 }
-                //listItems.Add(new { @onchange = "alert('das');"});
-                SkillsetListItems = listItems;
             }
         }
-        public int SelectedIndex { get; private set; }
 
-        public SkillsetCollectionViewModel(List<Skillset> skillsets, int index)
+        public SkillsetCollectionViewModel(int selectedItemId, List<Skillset> skillsets)
         {
-            SelectedIndex = index;
+            this.selectedItemId = selectedItemId;
             Skillsets = skillsets;
-        }
-
-        public object GetArguments()
-        {
-            return new { @onchange = "opfunction();", @size = 10 };
         }
     }
 }

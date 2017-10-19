@@ -21,16 +21,11 @@
         <div id="taskContent" class="row">
         </div>
     </div>
-
 </div>
 
 <script>
-    //document.getElementById('tweenaam').addEventListener('onchange', listBoxItemSelectionChanged);
-    document.getElementById('tweenaam').onchange = listBoxItemSelectionChanged;
-    document.getElementById('btnCrudAdd').onclick = function () {
-        //alert('You clicked my ding ding dong');
-        window.location.href = '/Home/NewTask';
-    }
+    document.getElementById('lbox').onchange = listBoxItemSelectionChanged;
+    document.getElementById('btnCrudAdd').onclick = function () { window.location.href = '/Home/NewTask'; }
     document.getElementById('btnCrudEdit').onclick = function () { window.location.href = '/Home/EditTask/' + getListBoxSelectedItemId(); }
 
     listBoxItemSelectionChanged();
@@ -50,11 +45,4 @@
 
         xhr.send();
     }
-
-    function getListBoxSelectedItemId() {
-        var listBox = document.getElementById('tweenaam');
-        return listBox.options[listBox.selectedIndex].value;
-    }
-
-
 </script>

@@ -10,10 +10,8 @@ namespace HRMapp.DAL.Repositories
         private ISkillsetContext context = new MemorySkillsetContext();
 
         public IEnumerable<Skillset> GetAll() => context.GetAll();
-
-        public int Add(Skillset skillset)
-        {
-            return context.Add(skillset);
-        }
+        public Skillset GetById(int id) => context.GetById(id);
+        public int Add(Skillset skillset) => context.Add(skillset);
+        public bool Update(Skillset skillset) => context.Update(skillset);
     }
 }
