@@ -1,7 +1,7 @@
 @using HRMapp.Models
 @model List<SelectListItem>
 
-    <input type="text" placeholder="Search..." />
-    <div>
-        @Html.ListBox("tweenaam", Model)
-    </div>
+<input type="text" placeholder="Search..." />
+<div>
+    @Html.DropDownList("tweenaam", Model, new { size = 5 })
+</div>
