@@ -3,6 +3,15 @@
 
 <h3>@Model.Name</h3>
 <p>ID: @Model.Id</p>
-<p>Duration: @Model.Duration.Hours uur en @Model.Duration.Minutes minuten</p>
+<p>Duur: @Model.Duration.Hours uur en @Model.Duration.Minutes minuten</p>
+<br />
 <h4>Omschrijving:</h4>
 <p>@Model.Description</p>
+<br />
+<h4>Nodige skillsets:</h4>
+<ul>
+    @foreach (var skillset in Model.RequiredSkillsets)
+    {
+        <li>@skillset.Name</li>
+    }
+</ul>

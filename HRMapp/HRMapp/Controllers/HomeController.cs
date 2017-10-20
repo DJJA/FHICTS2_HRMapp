@@ -85,27 +85,27 @@ namespace HRMapp.Controllers
 
         public IActionResult NewTask()
         {
-            return View("../Shared/TaskEditor", new TaskEditorViewModel());
+            return View("../Shared/TaskEditor", new TaskEditorViewModel(skillsetLogic.GetAll().ToList()));
         }
 
         [HttpPost]
         public IActionResult NewTask(TaskEditorViewModel model)
         {
             //var addedTaskId = taskLogic.Add(new ProductionTask(-1, model.Title, model.Description));
-            var addedTaskId = taskLogic.Add(model.ToTask());
+            var addedTaskId = taskLogic.Add(model.ToTask(skillsetLogic.GetAll().ToList()));
             return RedirectToAction("Task", new { id = addedTaskId });
         }
 
         public IActionResult EditTask(int id)
         {
             var task = taskLogic.GetById(id);
-            return View("../Shared/TaskEditor", new TaskEditorViewModel(task));
+            return View("../Shared/TaskEditor", new TaskEditorViewModel(skillsetLogic.GetAll().ToList(), task));
         }
 
         [HttpPost]
         public IActionResult EditTask(TaskEditorViewModel model)
         {
-            var success = taskLogic.Update(model.ToTask());
+            var success = taskLogic.Update(model.ToTask(skillsetLogic.GetAll().ToList()));
             return RedirectToAction("Task", new { id = model.Id });
         }
         #endregion

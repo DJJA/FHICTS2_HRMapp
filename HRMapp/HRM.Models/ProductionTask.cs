@@ -14,6 +14,7 @@ namespace HRMapp.Models
 
         public ProductionTask(int id, string name)
         {
+            RequiredSkillsets = new List<Skillset>();
             Id = id;
             Name = name;
         }
@@ -24,10 +25,11 @@ namespace HRMapp.Models
             Description = description;
         }
 
-        public ProductionTask(int id, string name, string description, TimeSpan duration)
+        public ProductionTask(int id, string name, string description, TimeSpan duration, List<Skillset> requiredSkillsets)
             : this(id, name, description)
         {
             Duration = duration;
+            RequiredSkillsets = requiredSkillsets;
         }
     }
 }
