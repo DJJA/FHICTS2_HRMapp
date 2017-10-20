@@ -15,7 +15,6 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Description" class="control-label"></label>
-        @*<input asp-for="@Model.Description" class="form-control" oninput="settingsChanged = true" />*@
         <textarea asp-for="@Model.Description" class="form-control" placeholder="Typ hier een omschrijving..."></textarea>
     </div>
     <div class="form-group">
@@ -33,19 +32,17 @@
     </div>
     <div class="form-group">
         <div>
-            <h4>Skillsets:</h4>
-            @Html.ListBox("lboxAvailableSkillsets", Model.AvailableSkillsetListItems, new { size = 10 })
+            <label class="control-label" for="lboxAvailableSkillsets">Skillsets:</label>
+            @Html.ListBox("lboxAvailableSkillsets", Model.AvailableSkillsetListItems, new { @class = "form-control", size = 10 })
         </div>
         <div>
             <a id="btnSkillsetsMoveToRequired" class="btn btn-default">>></a>
             <a id="btnSkillsetsMoveFromRequired" class="btn btn-default"><<</a>
         </div>
         <div>
-            <h4>Nodige skillsets:</h4>
-            @Html.ListBox("RequiredSkillsetsIds", Model.RequiredSkillsetListItems, new { size = 10 })
+            <label class="control-label" for="lboxRequiredSkillsets">Nodige skillsets:</label>
+            @Html.ListBox("lboxRequiredSkillsets", Model.RequiredSkillsetListItems, new { @class = "form-control", size = 10 })
         </div>
-        @*<input id="btnTemp" class="btn btn-default" value="debugger" />
-        <div id="divTemp"></div>*@
     </div>
     <div class="form-group">
         <button id="btnSubmit" type="submit" class="btn btn-default">Opslaan</button>
@@ -60,11 +57,22 @@
     document.getElementById('Description').oninput = function () { userInputChanged = true; }
     document.getElementById('DurationHours').oninput = function () { userInputChanged = true; }
     document.getElementById('DurationMinutes').oninput = function () { userInputChanged = true; }
+    document.getElementById('btnCancel').onclick = function () { window.history.back(); }
+
     document.getElementById('btnSubmit').onclick = function () {
         userInputChanged = false;
-        selectAllOptions(document.getElementById('RequiredSkillsetsIds'));
+        selectAllOptions(document.getElementById('lboxRequiredSkillsets'));
     }
-    document.getElementById('btnCancel').onclick = function () { window.history.back(); }
+
+    document.getElementById('btnSkillsetsMoveToRequired').onclick = function () {
+        userInputChanged = true;
+        moveSelectedOptionsBetweenSelects(document.getElementById('lboxAvailableSkillsets'), document.getElementById('lboxRequiredSkillsets'));
+    }
+
+    document.getElementById('btnSkillsetsMoveFromRequired').onclick = function () {
+        userInputChanged = true;
+        moveSelectedOptionsBetweenSelects(document.getElementById('lboxRequiredSkillsets'), document.getElementById('lboxAvailableSkillsets'));
+    }
 
     window.onbeforeunload = function (event) {
         if (userInputChanged) {
@@ -73,31 +81,16 @@
         }
     }
 
-    //document.getElementById('btnTemp').onclick = function () { document.getElementById('divTemp').innerHTML = getSelectValues(document.getElementById('lboxAvailableSkillsets')); }
-
-    document.getElementById('btnSkillsetsMoveToRequired').onclick = function () {
-        var lboxAvailableSkillsets = document.getElementById('lboxAvailableSkillsets');
-        var lboxRequiredSkillsets = document.getElementById('RequiredSkillsetsIds');
-        var selectedItems = getSelectValues(lboxAvailableSkillsets);
+    function moveSelectedOptionsBetweenSelects(selectElementFrom, selectElementTo) {
+        var selectedItems = getSelectValues(selectElementFrom);
 
         for (var i = 0; i < selectedItems.length; i++) {
-            lboxAvailableSkillsets.remove(getOptionIndexByValue(lboxAvailableSkillsets, selectedItems[i].value));  // Could be more efficient perhaps
-            lboxRequiredSkillsets.add(selectedItems[i]);
+            selectElementFrom.remove(getOptionIndexByValue(selectElementFrom, selectedItems[i].value));  // Could be more efficient perhaps
+            selectElementTo.add(selectedItems[i]);
         }
     }
 
-    document.getElementById('btnSkillsetsMoveFromRequired').onclick = function () {
-        var lboxAvailableSkillsets = document.getElementById('lboxAvailableSkillsets');
-        var lboxRequiredSkillsets = document.getElementById('RequiredSkillsetsIds');
-        var selectedItems = getSelectValues(lboxRequiredSkillsets);
-
-        for (var i = 0; i < selectedItems.length; i++) {
-            lboxRequiredSkillsets.remove(getOptionIndexByValue(lboxRequiredSkillsets, selectedItems[i].value));  // Could be more efficient perhaps
-            lboxAvailableSkillsets.add(selectedItems[i]);
-        }
-    }
-
-    // Return an array of the selected opion values (<index in select>, <option value>, <option text>)
+    // Return an array of the selected opion values
     // select is an HTML select element
     function getSelectValues(selectElement) {
         var result = [];

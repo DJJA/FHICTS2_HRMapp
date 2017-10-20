@@ -66,14 +66,14 @@ namespace HRMapp.ViewModels
             }
         }
 
-        //public List<int> AvailableSkillsets { get; set; }
-        public List<int> RequiredSkillsetsIds { get; set; }
+        //public List<int> LboxAvailableSkillsets { get; set; }
+        public List<int> LboxRequiredSkillsets { get; set; }
         
         public TaskEditorViewModel()                // This constructor is for the taskEditor so it can return something, needs empty constructor
         {
             //availableSkillsets = new List<Skillset>();
             //requiredSkillsets = new List<Skillset>();
-            RequiredSkillsetsIds = new List<int>();             // Hoe weet ik straks waarom ik dit hier doe?
+            LboxRequiredSkillsets = new List<int>();             // Hoe weet ik straks waarom ik dit hier doe?
         }
 
         public TaskEditorViewModel(List<Skillset> availableSkillsets)   // Used for new
@@ -97,7 +97,7 @@ namespace HRMapp.ViewModels
         public ProductionTask ToTask(List<Skillset> skillsets)
         {
             var requiredSkillsets = new List<Skillset>();
-            foreach (var id in RequiredSkillsetsIds)
+            foreach (var id in LboxRequiredSkillsets)
             {
                 requiredSkillsets.Add(skillsets.Single(skillset => skillset.Id == id));
             }
