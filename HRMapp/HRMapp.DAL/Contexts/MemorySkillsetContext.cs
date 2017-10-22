@@ -53,11 +53,11 @@ namespace HRMapp.DAL
 
         private void AddRandomItems()
         {
-            skillsets.Add(new Skillset(0, "Solderen 1"));
-            skillsets.Add(new Skillset(1, "Solderen 2"));
-            skillsets.Add(new Skillset(2, "Solderen 3"));
-            skillsets.Add(new Skillset(3, "Solderen 4"));
-            skillsets.Add(new Skillset(4, "Solderen 5"));
+            skillsets.Add(new Skillset(0, "Solderen 1", "Het kunnen solderen van een 4-polige connector."));
+            skillsets.Add(new Skillset(1, "Solderen 2", "Het kunnen solderen van een 8-polige connector."));
+            skillsets.Add(new Skillset(2, "Solderen 3", "Het kunnen solderen van een 16-polige connector."));
+            skillsets.Add(new Skillset(3, "Solderen 4", "Het kunnen solderen van een 32-polige connector."));
+            skillsets.Add(new Skillset(4, "Solderen 5", "Het kunnen solderen van een 64-polige connector."));
         }
     }
 }

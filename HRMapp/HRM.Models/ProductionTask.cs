@@ -6,8 +6,23 @@ namespace HRMapp.Models
 {
     public class ProductionTask
     {
+        private string name;
         public int Id { get; private set; }
-        public string Name { get; private set; }
+        public string Name
+        {
+            get { return name; }
+            private set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    name = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Task name must be set.");
+                }
+            }
+        }
         public string Description { get; private set; }
         public TimeSpan Duration { get; private set; }
         public List<Skillset> RequiredSkillsets { get; private set; }

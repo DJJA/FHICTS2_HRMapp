@@ -4,7 +4,7 @@ namespace HRMapp.Models
 {
     public class Skillset
     {
-        private string name;
+        private string name, description;
         public int Id { get; private set; }
         public string Name
         {
@@ -21,30 +21,32 @@ namespace HRMapp.Models
                 }
             }
         }
-        public string Description { get; private set; }
-
-        public Skillset(string name)
+        public string Description
         {
-            Id = -1;
-            Name = name;
+            get { return description; }
+            private set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    description = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Skillset description must be set.");
+                }
+            }
         }
 
         public Skillset(string name, string description)
-            : this(name)
         {
-            Description = description;
-        }
-
-        public Skillset(int id, string name)
-        {
-            Id = id;
             Name = name;
+            Description = description;
         }
 
         public Skillset(int id, string name, string description)
-            : this(id, name)
+            : this(name, description)
         {
-            Description = description;
+            Id = id;
         }
     }
 }

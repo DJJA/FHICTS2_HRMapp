@@ -40,6 +40,10 @@
         </div>
     </nav>
     <div class="container body-content">
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <p class="text-danger">@ViewData["ErrorMessage"]</p>
+        }
         @RenderBody()
         <hr />
         <footer>

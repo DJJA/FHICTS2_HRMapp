@@ -52,6 +52,7 @@ namespace HRMapp.Controllers
 
         public IActionResult EditSkillset(int id)
         {
+            ViewData["ErrorMessage"] = TempData["ErrorMessage"];
             var skillset = skillsetLogic.GetById(id);
             return View("../Shared/SkillsetEditor", new SkillsetEditorViewModel(skillset));
         }
@@ -59,8 +60,19 @@ namespace HRMapp.Controllers
         [HttpPost]
         public IActionResult EditSkillset(SkillsetEditorViewModel model)
         {
-            var success = skillsetLogic.Update(model.ToSkillset());
-            return RedirectToAction("Skillset", new { id = model.Id });
+            //var success = skillsetLogic.Update(model.ToSkillset());
+            //return RedirectToAction("Skillset", new { id = model.Id });
+            try
+            {
+                var success = skillsetLogic.Update(model.ToSkillset());
+                return RedirectToAction("Skillset", new { id = model.Id });
+            }
+            catch(ArgumentException ex)
+            {
+                TempData["ErrorMessage"] = ex.Message;
+                return RedirectToAction("EditSkillset", new { id = model.Id });
+            }
+            
         }
         #endregion
         #region Task
