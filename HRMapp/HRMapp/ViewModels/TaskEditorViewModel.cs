@@ -13,7 +13,9 @@ namespace HRMapp.ViewModels
         private List<Skillset> availableSkillsets = new List<Skillset>();
         private List<Skillset> requiredSkillsets = new List<Skillset>();
 
+        public string ErrorMessage { get; set; }
         public string FormAction { get; private set; }
+        public string FormTitle { get; private set; }
         public int Id { get; set; }
         [DisplayName("Titel:")]
         public string Title { get; set; }
@@ -80,12 +82,14 @@ namespace HRMapp.ViewModels
         {
             this.availableSkillsets = availableSkillsets;
             FormAction = "NewTask";
+            FormTitle = "Nieuwe taak toevoegen";
         }
 
         public TaskEditorViewModel(List<Skillset> availableSkillsets, ProductionTask task)  // Used for edit
         {
             this.availableSkillsets = availableSkillsets;
             FormAction = "EditTask";
+            FormTitle = "Taak bewerken";
 
             Id = task.Id;
             Title = task.Name;

@@ -9,7 +9,9 @@ namespace HRMapp.ViewModels
 {
     public class SkillsetEditorViewModel
     {
+        public string ErrorMessage { get; set; }
         public string FormAction { get; private set; }
+        public string FormTitle { get; private set; }
         public int Id { get; set; }
         [DisplayName("Titel:")]
         public string Title { get; set; }
@@ -19,11 +21,14 @@ namespace HRMapp.ViewModels
         public SkillsetEditorViewModel()
         {
             FormAction = "NewSkillset";
+            FormTitle = "Nieuwe skillset toevoegen";
         }
 
         public SkillsetEditorViewModel(Skillset skillset)
         {
             FormAction = "EditSkillset";
+            FormTitle = "Skillset bewerken";
+
             Id = skillset.Id;
             Title = skillset.Name;
             Description = skillset.Description;

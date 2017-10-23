@@ -6,12 +6,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Nieuwe taak toevoegen</h2>
+<h2>@Model.FormTitle</h2>
+
+@if (!String.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p class="text-danger">@Model.ErrorMessage</p>
+}
 
 <form asp-action="@Model.FormAction" method="post">
     <div class="form-group">
         <label asp-for="@Model.Title" class="control-label"></label>
-        <input asp-for="@Model.Title" class="form-control" />
+        <input asp-for="@Model.Title" class="form-control" placeholder="Naam" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.Description" class="control-label"></label>
@@ -57,7 +62,7 @@
     document.getElementById('Description').oninput = function () { userInputChanged = true; }
     document.getElementById('DurationHours').oninput = function () { userInputChanged = true; }
     document.getElementById('DurationMinutes').oninput = function () { userInputChanged = true; }
-    document.getElementById('btnCancel').onclick = function () { window.history.back(); }
+    document.getElementById('btnCancel').onclick = function () { window.location.href = '/Home/Task'; }
 
     document.getElementById('btnSubmit').onclick = function () {
         userInputChanged = false;

@@ -6,7 +6,7 @@ namespace HRMapp.Models
 {
     public class ProductionTask
     {
-        private string name;
+        private string name, description;
         public int Id { get; private set; }
         public string Name
         {
@@ -23,21 +23,30 @@ namespace HRMapp.Models
                 }
             }
         }
-        public string Description { get; private set; }
+        public string Description
+        {
+            get { return description; }
+            private set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    description = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Task description must be set.");
+                }
+            }
+        }
         public TimeSpan Duration { get; private set; }
         public List<Skillset> RequiredSkillsets { get; private set; }
 
-        public ProductionTask(int id, string name)
+        public ProductionTask(int id, string name, string description)
         {
-            RequiredSkillsets = new List<Skillset>();
             Id = id;
             Name = name;
-        }
-
-        public ProductionTask(int id, string name, string description)
-            : this(id, name)
-        {
             Description = description;
+            RequiredSkillsets = new List<Skillset>();
         }
 
         public ProductionTask(int id, string name, string description, TimeSpan duration, List<Skillset> requiredSkillsets)

@@ -55,13 +55,20 @@ namespace HRMapp.DAL
 
         private void AddRandomItems()
         {
-            var mem = new MemorySkillsetContext();
-            var skillsets = mem.GetAll().ToList();
-            tasks.Add(new ProductionTask(0, "Connector solderen 1", "Het solderen van een 4-polige connector", new TimeSpan(2, 30, 0), new List<Skillset>() { skillsets[0], skillsets[1] }));
-            tasks.Add(new ProductionTask(1, "Connector solderen 2", "Het solderen van een 8-polige connector", new TimeSpan(5, 0, 0), new List<Skillset>() { skillsets[3], skillsets[2] }));
-            tasks.Add(new ProductionTask(2, "Connector solderen 3", "Het solderen van een 16-polige connector", new TimeSpan(4, 30, 0), new List<Skillset>() { skillsets[4], skillsets[1] }));
-            tasks.Add(new ProductionTask(3, "Connector solderen 4", "Het solderen van een 32-polige connector", new TimeSpan(1, 30, 0), new List<Skillset>() { skillsets[0], skillsets[2] }));
-            tasks.Add(new ProductionTask(4, "Connector solderen 5", "Het solderen van een 64-polige connector", new TimeSpan(0, 45, 0), new List<Skillset>() { skillsets[3], skillsets[4] }));
+            //var mem = new MemorySkillsetContext();
+            //var skillsets = mem.GetAll().ToList();
+            //tasks.Add(new ProductionTask(0, "Connector solderen 1", "Het solderen van een 4-polige connector", new TimeSpan(2, 30, 0), new List<Skillset>() { skillsets[0], skillsets[1] }));
+            //tasks.Add(new ProductionTask(1, "Connector solderen 2", "Het solderen van een 8-polige connector", new TimeSpan(5, 0, 0), new List<Skillset>() { skillsets[3], skillsets[2] }));
+            //tasks.Add(new ProductionTask(2, "Connector solderen 3", "Het solderen van een 16-polige connector", new TimeSpan(4, 30, 0), new List<Skillset>() { skillsets[4], skillsets[1] }));
+            //tasks.Add(new ProductionTask(3, "Connector solderen 4", "Het solderen van een 32-polige connector", new TimeSpan(1, 30, 0), new List<Skillset>() { skillsets[0], skillsets[2] }));
+            //tasks.Add(new ProductionTask(4, "Connector solderen 5", "Het solderen van een 64-polige connector", new TimeSpan(0, 45, 0), new List<Skillset>() { skillsets[3], skillsets[4] }));
+            
+
+            tasks.Add(new ProductionTask(0, "Connector solderen 1", "Het solderen van een 4-polige connector"));
+            tasks.Add(new ProductionTask(1, "Connector solderen 2", "Het solderen van een 8-polige connector"));
+            tasks.Add(new ProductionTask(2, "Connector solderen 3", "Het solderen van een 16-polige connector"));
+            tasks.Add(new ProductionTask(3, "Connector solderen 4", "Het solderen van een 32-polige connector"));
+            tasks.Add(new ProductionTask(4, "Connector solderen 5", "Het solderen van een 64-polige connector"));
         }
     }
 }

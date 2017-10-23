@@ -8,10 +8,13 @@
 <h4>Omschrijving:</h4>
 <p>@Model.Description</p>
 <br />
-<h4>Nodige skillsets:</h4>
-<ul>
-    @foreach (var skillset in Model.RequiredSkillsets)
-    {
-        <li>@skillset.Name</li>
-    }
-</ul>
+@if (Model.RequiredSkillsets.Count > 0)
+{
+    <h4>Nodige skillsets:</h4>
+    <ul>
+        @foreach (var skillset in Model.RequiredSkillsets)
+        {
+            <li>@skillset.Name</li>
+        }
+    </ul>
+}
